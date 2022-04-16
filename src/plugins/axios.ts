@@ -9,7 +9,8 @@ import axios from 'axios'
 const config = {
   baseURL:
     // process.env.apiBaseURL || $env.apiBaseUrl || 'http://localhost:3008/',
-    process.env.APIBASEURL || 'http://54.225.110.131:80/',
+    // process.env.APIBASEURL || 'http://api.orbiter.finance',
+    process.env.APIBASEURL || 'http://api.orbiter.finance',
 
   // timeout: 60 * 1000, // Timeout
   // withCredentials: true, // Check cross-site Access-Control
