@@ -1,5 +1,5 @@
 // import { $env } from '@/env'
-import axios from 'axios'
+import axios from "axios";
 
 // Full config:  https://github.com/axios/axios#request-config
 // axios.defaults.baseURL = process.env.baseURL || process.env.apiUrl || '';
@@ -14,19 +14,19 @@ const config = {
 
   // timeout: 60 * 1000, // Timeout
   // withCredentials: true, // Check cross-site Access-Control
-}
+};
 
-const $axios = axios.create(config)
+const $axios = axios.create(config);
 
 $axios.interceptors.request.use(
   function (config) {
     // Do something before request is sent
-    return config
+    return config;
   },
   function (error) {
     // Do something with request error
-    return Promise.reject(error)
+    return Promise.reject(error);
   }
-)
+);
 
-export { $axios }
+export { $axios };
