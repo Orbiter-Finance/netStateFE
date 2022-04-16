@@ -10,7 +10,7 @@ const config = {
   baseURL:
     // process.env.apiBaseURL || $env.apiBaseUrl || 'http://localhost:3008/',
     // process.env.APIBASEURL || 'http://api.orbiter.finance',
-    process.env.APIBASEURL || 'http://api.orbiter.finance',
+    process.env.APIBASEURL || 'http://3.115.227.115',
 
   // timeout: 60 * 1000, // Timeout
   // withCredentials: true, // Check cross-site Access-Control
