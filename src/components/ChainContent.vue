@@ -3,18 +3,23 @@
   <div class="chain-info">
     <div class="chain-name">{{ chainInfo.chainName }}:{{ chainInfo.apiUrl }}</div>
 
-    <div class="chain-timeline">
+    <div class="chain-timeline" v-if="chainInfo.netstatList.length > 0">
       <template v-for="(item, index) in chainInfo.netstatList" :key="index">
 
-        <a-tooltip color="#2b2929">
-          <template #title><span style=" white-space: pre-line;">blockNumber:{{ item.last_block_num }}<br />time:{{ formatDate(item.created_at) }}</span></template>
+        <el-tooltip placement="top" :show-after="50">
+          <template #content>
+
+            blockNumber:{{ item.last_block_num }}
+            <br />
+            time:{{ formatDate(item.created_at) }}
+          </template>
           <div class="chain-item" :style="{ 'background-color': item.ten_minite_net_state ? 'orange' : 'green' }"></div>
-        </a-tooltip>
+        </el-tooltip>
 
       </template>
     </div>
     <div class="chain-description">
-      <span>{{ formatDate(chainInfo.netstatList[0].created_at) }}</span>
+      <span>{{ chainInfo.netstatList[0] ? formatDate(chainInfo.netstatList[0].created_at) : '--' }}</span>
       <div class="decorate"></div>
       <span>10 minute period</span>
       <div class="decorate"></div>
@@ -40,7 +45,7 @@ function formatDate(timeStamp: string) {
     var hour = date.getHours();
     var minute = date.getMinutes();
     var second = date.getSeconds();
-    return `${year}-${formatTen(month)}-${formatTen(day)} ${hour}:${minute}:${second}`;
+    return `${year}-${formatTen(month)}-${formatTen(day)} ${formatTen(hour)}:${formatTen(minute)}:${formatTen(second)}`;
   } catch (error) {
     return "0"
   }
@@ -55,7 +60,7 @@ function formatTen(num: number) {
 <style scoped lang="scss">
 .chain-info {
   width: 70%;
-  height: 200px;
+  height: 150px;
   text-align: center;
   margin: 10px auto;
   padding: 10px;
@@ -63,7 +68,7 @@ function formatTen(num: number) {
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-start;
-  border-radius: 20px;
+  border-radius: 10px;
   border: 1px #fdd3d3 solid;
 }
 
@@ -82,7 +87,7 @@ function formatTen(num: number) {
 
 .chain-item {
   width: 7px;
-  height: 60px;
+  height: 50px;
   display: inline-display;
 }
 
